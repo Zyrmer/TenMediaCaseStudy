@@ -19,6 +19,7 @@
                         <p class="card-text">{{ \Illuminate\Support\Str::limit($job->description, 100) }}</p>
                         <p><strong>Unternehmen:</strong> {{ $job->company->name ?? 'N/A' }}</p>
                         <p><strong>Kategorie:</strong> {{ $job->category->name ?? 'N/A' }}</p>
+                        <p><strong>Konzepte:</strong> {{ $job->category->name ?? 'N/A' }}</p>
                         @auth
                             <a href="{{ route('jobs.show', $job->id) }}" class="btn btn-primary btn-sm">Details</a>
                         @endauth

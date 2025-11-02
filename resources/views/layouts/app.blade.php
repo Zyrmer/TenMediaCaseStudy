@@ -17,6 +17,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto">
                     @auth
+                        <li><a class="nav-link" href="{{ route('images.index') }}">Konzepte</a></li>
                         <li><a class="nav-link" href="{{ route('jobs.index') }}">Jobs</a></li>
                         <li><a class="nav-link" href="{{ route('companies.index') }}">Unternehmen</a></li>
                         <li><a class="nav-link" href="{{ route('categories.index') }}">Kategorien</a></li>

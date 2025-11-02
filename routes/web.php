@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\ImageController;
 use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 
@@ -23,10 +24,12 @@ Route::get('/dashboard', function () {
 
 // Protected routes for logged-in users only
 Route::middleware(['auth','verified'])->group(function () {
+    Route::post('/images', [ImageController::class, 'store'])->name('images.store');
     Route::resource('users', UserController::class);
     Route::resource('companies', CompanyController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('jobs', JobController::class);
+    Route::resource('images', ImageController::class);
 });
 
 require __DIR__.'/auth.php';
