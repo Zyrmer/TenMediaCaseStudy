@@ -21,7 +21,9 @@
                         <li><a class="nav-link" href="{{ route('jobs.index') }}">Jobs</a></li>
                         <li><a class="nav-link" href="{{ route('companies.index') }}">Unternehmen</a></li>
                         <li><a class="nav-link" href="{{ route('categories.index') }}">Kategorien</a></li>
-                        <li><a class="nav-link" href="{{ route('users.index') }}">User</a></li>
+                        @if(Auth::user()->role === 'admin')
+                            <li><a class="nav-link" href="{{ route('users.index') }}">User</a></li>
+                        @endif
                     @endauth
                 </ul>
 
