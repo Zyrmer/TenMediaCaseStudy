@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 // Public start page for guests | Display jobs
 Route::get('/', function () {
     $jobs = Job::latest()->take(6)->get();
-    return view('start', compact('jobs'));
+    $nextJobs = Job::latest()->skip(6)->take(6)->get();
+    return view('start', compact('jobs', 'nextJobs'));
 })->name('start');
 
 Route::get('/dashboard', function () {
