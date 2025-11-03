@@ -10,6 +10,8 @@ class AppServiceProvider extends ServiceProvider
     Job::class => JobPolicy::class,
     User::class => UserPolicy::class,
     Company::class => CompanyPolicy::class,
+    Category::class => CategoryPolicy::class,
+    Image::class => ImagePolicy::class,
 ];
     /**
      * Register any application services.

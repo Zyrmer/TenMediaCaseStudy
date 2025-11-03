@@ -24,28 +24,28 @@ class CategoryPolicy
         return false;
     }
 
-    /**
+     /**
      * Determine whether the user can create models.
      */
     public function create(User $user): bool
     {
-        return false;
+         return $user->role === 'admin';
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Category $category): bool
+    public function update(User $user, Category $category)
     {
-        return false;
+        return $user->id === $category->user_id || $user->role === 'admin';
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Category $category): bool
+    public function delete(User $user, Category $category)
     {
-        return false;
+        return $user->id === $category->user_id || $user->role === 'admin';
     }
 
     /**
@@ -53,7 +53,8 @@ class CategoryPolicy
      */
     public function restore(User $user, Category $category): bool
     {
-        return false;
+        return $user->role === 'admin';
+    
     }
 
     /**
@@ -61,6 +62,7 @@ class CategoryPolicy
      */
     public function forceDelete(User $user, Category $category): bool
     {
-        return false;
+        return $user->role === 'admin';
+    
     }
 }

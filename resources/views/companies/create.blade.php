@@ -23,8 +23,8 @@
         </div>
 
         <div class="mb-3">
-            <label for="location" class="form-label">Standort</label>
-            <input type="text" name="location" class="form-control" id="location">
+            <label for="website" class="form-label">Website</label>
+            <input type="url" name="website" class="form-control" id="website">
         </div>
 
         <div class="mb-3">

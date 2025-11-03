@@ -29,7 +29,7 @@ class JobFactory extends Factory
 
             'company_id' => Company::factory(),
             'category_id' => Category::factory(),
-            'users_id' => User::factory(),
+            'user_id' => User::factory(),
         ];
     }
 }

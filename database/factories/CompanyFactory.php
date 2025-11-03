@@ -20,7 +20,7 @@ class CompanyFactory extends Factory
 
             'name' => $this->faker->company(),
             'description' => $this->faker->sentence(8),
-            'website' => $this->faker->companyEmail(),
+            'website' => $this->faker->url(),
           
         ];
     }

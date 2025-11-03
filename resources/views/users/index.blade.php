@@ -3,7 +3,7 @@
 @section('content')
 <h1>Benutzer</h1>
 
-<a href="{{ route('users.create') }}" class="btn btn-primary mb-3">+ Neue Stelle</a>
+<a href="{{ route('users.create') }}" class="btn btn-primary mb-3">+ Neuer Benutzer</a>
 @if($users->count())
     <table class="table table-striped">
         <thead>

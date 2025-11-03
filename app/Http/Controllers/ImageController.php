@@ -16,23 +16,20 @@ class ImageController extends Controller
 
       public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Store image in 'storage/app/public/images'
         $path = $request->file('image')->store('images', 'public');
 
-        $image = Image::create([
-        'title' => $request->title,
-        'description' => $request->description,
-        'image' => $path,
-    ]);
+        $validated['image'] = $path;
 
-    return redirect()->route('images.index')->with('success', 'Image hochgeladen!');
-}
+        Image::create($validated);
+
+        return redirect()->route('images.index')->with('success', 'Image hochgeladen!');
+    }
     public function create()
     {
         return view('images.create');
@@ -51,17 +48,30 @@ class ImageController extends Controller
     }
 
     public function update(Request $request, Image $image)
-    {
-        $validated = $image->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required',
-            'image' => 'nullable',
-        ]);
+{
+    $validated = $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        Image::update($validated);
+    if ($request->hasFile('image')) {
 
-        return redirect()->route('images.index')->with('success', 'Unternehmen updated successfully!');
+        if ($image->image && \Storage::disk('public')->exists($image->image)) {
+            \Storage::disk('public')->delete($image->image);
+        }
+
+        $path = $request->file('image')->store('images', 'public');
+        
+        $validated['image'] = $path;
     }
+
+    $image->update($validated);
+
+    return redirect()->route('images.index')->with('success', 'Image updated successfully!');
+}
+
+
 
     public function destroy(Image $image)
     {
