@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin',
             'email'=> 'admin@web.de',
             'mobile'=> '015712345678',
-            'password'=> bcrypt('password'),
+            'password'=> 'password',
             'role'=> 'admin',
         ]);
 
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'user',
             'email'=> 'user@web.de',
             'mobile'=> '015712345678',
-            'password'=> bcrypt('password'),
+            'password'=> 'password',
             'role'=> 'user',
         ]);
   
