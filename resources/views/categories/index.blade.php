@@ -17,7 +17,6 @@
         @foreach($categories as $category)
         <tr>
             <td><a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a></td>
-            {{-- <td>{{ $category->name ?? '-' }}</td> --}}
             <td>{{ $category->description ?? '-' }}</td>
             <td>
                 <a href="{{ route('categories.edit', $category) }}" class="btn btn-sm btn-warning">Bearbeiten</a>
@@ -29,6 +28,7 @@
         </tr>
         @endforeach
     </tbody>
+    {{ $categories->links() }}
 </table>
 @endsection
 

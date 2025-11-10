@@ -13,7 +13,7 @@ class JobController extends Controller
     use AuthorizesRequests;
     public function index()
     {
-        $jobs = Job::with('company', 'category')->get();
+        $jobs = Job::with('company', 'category')->orderBy("id","desc")->paginate(10);;
         return view('jobs.index', compact('jobs'));
     }
 

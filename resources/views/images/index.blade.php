@@ -34,5 +34,6 @@
         </tr>
         @endforeach
     </tbody>
+    {{ $images->links() }}
 </table>
 @endsection

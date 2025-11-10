@@ -34,6 +34,7 @@
             </tr>
             @endforeach
         </tbody>
+        {{ $users->links() }}
     </table>
      @else
         <p>Keine Benutzer gefunden.</p>

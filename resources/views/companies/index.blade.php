@@ -30,5 +30,6 @@
         </tr>
         @endforeach
     </tbody>
+    {{ $companies->links() }}
 </table>
 @endsection

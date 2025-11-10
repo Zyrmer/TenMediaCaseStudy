@@ -34,5 +34,6 @@
         </tr>
         @endforeach
     </tbody>
+    {{ $jobs->links() }}
 </table>
 @endsection
